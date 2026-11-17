@@ -19,14 +19,14 @@ from pycrdt import (Doc, Text, YMessageType, create_sync_message, create_update_
                     handle_sync_message)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-EC = os.environ.get("EMACS_COLLAB", "/home/r0k0r/git_shit/emacs-collab.el")
+EC = os.environ.get("EMACS_COLLAB", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "emacs-collab.el"))
 sys.path.insert(0, os.path.join(EC, "bridge-ref"))
 sys.path.insert(0, os.path.join(EC, "conformance"))
 import ot  # noqa: E402,F401
 import run as conf  # noqa: E402  (rand_op, EDoc, STATS)
 
 BRIDGE = os.environ.get("SYNCWORTHY_BRIDGE", os.path.join(HERE, "..", "target", "debug", "syncworthy_bridge"))
-SRC = os.environ.get("SYNCWORTHY_SRC", "/home/r0k0r/git_shit/syncworthy")
+SRC = os.environ.get("SYNCWORTHY_SRC", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "syncworthy"))
 SERVER = os.environ.get("SYNCWORTHY_SERVER", f"{sys.executable} -m syncworthy serve {{dir}} --headless -p {{port}}")
 TOKEN = "it-token"
 
